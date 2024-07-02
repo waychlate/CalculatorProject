@@ -36,6 +36,7 @@ function eval (first, second, opp) {
     for (let v of sum.toString().split('')) {
         firstNum.push(v)
     }
+    
     secondNum = [];
     display.textContent = firstNum.join('');
     console.log(firstNum)
@@ -142,6 +143,45 @@ contentContainer.addEventListener("click", (event) => {
                 return;
             }
         }
+
     }
 })
 
+document.addEventListener("keydown", event => {
+    const availableInputs = '1234567890.'
+
+    if (availableInputs.includes(event.key)) {
+        event.preventDefault();
+        let char = event.key;
+
+        //Get a firstNum value
+        if (!operator && !possibleOperators.includes(char) && !specialOperators.includes(char)) {
+            if (!firstNum.includes('.') && char == '.') {
+                firstNum.push(char);
+                display.textContent = firstNum.join('');
+                return;
+            } else if (firstNum.includes('.') && char == '.'){
+                return;
+            } else {
+                firstNum.push(char);
+                display.textContent = firstNum.join('');
+                return;
+            }
+        }
+
+        //Get a secondNum value
+        if (operator && !possibleOperators.includes(char) && !specialOperators.includes(char)) {
+            if (!secondNum.includes('.') && char == '.') {
+                secondNum.push(char);
+                display.textContent = secondNum.join('');
+                return;
+            } else if (secondNum.includes('.') && char == '.'){
+                return;
+            } else {
+                secondNum.push(char);
+                display.textContent = secondNum.join('');
+                return;
+            }
+        }
+    }
+})
