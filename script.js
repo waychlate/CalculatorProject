@@ -30,8 +30,7 @@ let operator = '';
 let sum = 0;
 
 function eval (first, second, opp) {
-    sum = operate(parseInt(firstNum.join('')), parseInt(secondNum.join('')), operator);
-    console.log(sum)
+    sum = parseFloat(operate(parseFloat(firstNum.join('')), parseFloat(secondNum.join('')), operator).toFixed(3));
     
     firstNum = [];
     firstNum.push(sum);
@@ -45,6 +44,13 @@ contentContainer.addEventListener("click", (event) => {
     if (event.target.nodeName == "BUTTON") {
         //In the future integrate the negative sign 
         if (firstNum.length == 0 && possibleOperators.includes(char)) return; 
+
+        if (firstNum.length != 0  && secondNum.length == 0 && possibleOperators.includes(char)) {
+            if (char == operator) {
+                secondNum = firstNum;
+                eval(firstNum, secondNum, operator);
+            }
+        }
 
         if (firstNum.length != 0  && possibleOperators.includes(char)) {
             if (firstNum.length != 0 && secondNum.length != 0 && operator) {
