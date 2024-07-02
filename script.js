@@ -22,7 +22,7 @@ const contentContainer = document.querySelector(".calculator-container");
 const display = document.querySelector(".display-container p");
 
 const possibleOperators = "-+÷×";
-const specialOperators = "=c+/-";
+const specialOperators = "=c+/-←";
 
 let firstNum = [];
 let secondNum = [];
@@ -98,6 +98,18 @@ contentContainer.addEventListener("click", (event) => {
                         display.textContent = secondNum.join('');
                     }
                     return;
+                case '←':
+                    if (display.textContent == firstNum.join('')) {
+                        firstNum.shift();
+                        if (firstNum.length == 0) firstNum.push('0');
+                        display.textContent = firstNum.join('');
+                    } 
+                    if (display.textContent == secondNum.join('')) {
+                        secondNum.shift();
+                        if (secondNum.length == 0) firstNum.push('0');
+                        display.textContent = secondNum.join('');
+                    }
+
             }
         }
 
