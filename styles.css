@@ -36,31 +36,43 @@ p {
     gap: 0.5rem;
 }
 
-.numbers-container {
+.numbers-container, .symbols-container {
     display: flex;
     flex-flow: column nowrap;
-    gap: 0.5rem;
 }
 
-.symbols-container {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 0.5rem;
+div > button {
+    margin: 0.3rem;
 }
 
 .numbers-container button, .symbols-container button {
     background-color: #3c4043;
     color: white;
     border: 0;
-    border-radius: 1rem;
-    font-size: 3rem;
-    width: 7rem;
-    height: 7rem;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    width: 5rem;
+    height: 5rem;
 }
+
 
 .symbols-container button {
-
+    background-color: #70757a;
 }
+
+.symbols-container button:hover {
+    background-color: #74747c;
+}
+
+
+.symbols-container button.equals {
+    background-color: #8ab4f8;
+}
+
+.symbols-container button.equals:hover {
+    background-color: #b0ccfc;
+}
+
 
 button:hover {
     background-color: #48444c;
