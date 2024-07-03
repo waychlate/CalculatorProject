@@ -30,23 +30,22 @@ let operator = '';
 let sum = 0;
 
 function eval (first, second, opp) {
-    sum = parseFloat(operate(parseFloat(firstNum.join('')), parseFloat(secondNum.join('')), operator).toFixed(12));
+    result = parseFloat(operate(parseFloat(firstNum.join('')), parseFloat(secondNum.join('')), operator).toFixed(12));
     
     firstNum = [];
-    for (let v of sum.toString().split('')) {
+    for (let v of result.toString().split('')) {
         firstNum.push(v)
     }
     
     secondNum = [];
     display.textContent = firstNum.join('');
-    console.log(firstNum)
 
-    if (sum == 'Infinity') {
+    if (result == 'Infinity') {
         display.textContent = 'bruh';
         firstNum = [];
         secondNum = [];
         operator = '';
-        sum = 0;
+        result = 0;
     }
 }
 
@@ -60,12 +59,14 @@ contentContainer.addEventListener("click", (event) => {
             if (char == operator) {
                 secondNum = firstNum;
                 eval(firstNum, secondNum, operator);
+                return;
             }
         }
 
-        if (firstNum.length != 0  && possibleOperators.includes(char)) {
+        if (firstNum.length != 0 && possibleOperators.includes(char)) {
             if (firstNum.length != 0 && secondNum.length != 0 && operator) {
                 eval(firstNum, secondNum, operator);
+                operator = char;
             } else {
                 operator = char;
             }
